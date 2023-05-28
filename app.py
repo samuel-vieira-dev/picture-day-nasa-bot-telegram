@@ -11,7 +11,7 @@ def default():
     chat_id = update['message']['chat']['id']
     user_input = update['message']['text']
 
-    if "foto do dia" in user_input.lower():
+    if "foto do dia" not in user_input.lower():
         sendMessage(chat_id, "Para ver a foto do dia selecionada pela NASA, envie: 'Foto do dia'")
     else:
         sendPhoto(chat_id);  
