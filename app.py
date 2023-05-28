@@ -9,9 +9,19 @@ base_url = "https://api.telegram.org/bot6191098144:AAEo8eVcA04tb5bszVESyMcQ6rxlc
 def default():
     update = request.get_json()
     chat_id = update['message']['chat']['id']
+    user_input = update['message']['text']
+
+    if user_input.upper() != "FOTO DO DIA":
+        sendMessage(chat_id, "Para ver a foto do dia selecionada pela NASA, envie: 'Foto do dia'")
+        
     sendPhoto(chat_id)
 
     return 'ok', 200
+
+def sendMessage(chat_id, message):
+    url = base_url + f'sendMessage?chat_id={chat_id}&text={message}'
+    response = requests.get(url)
+    return response.json()
 
 def sendPhoto(chat_id):
     data = DayPicture()
