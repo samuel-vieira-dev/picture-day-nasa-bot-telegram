@@ -13,8 +13,8 @@ def default():
 
     if user_input.upper() != "FOTO DO DIA":
         sendMessage(chat_id, "Para ver a foto do dia selecionada pela NASA, envie: 'Foto do dia'")
-        
-    sendPhoto(chat_id)
+    else:
+        sendPhoto(chat_id);  
 
     return 'ok', 200
 
