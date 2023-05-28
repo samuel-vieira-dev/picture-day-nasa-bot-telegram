@@ -22,12 +22,14 @@ def sendMessage(chat_id):
     return response.json()
 
 def sendPhoto(chat_id):
-    photo_data = DayPicture()
-    photo_url = photo_data['foto']
+    data = DayPicture()
+    photo_url = data['foto']
+    caption = data['texto']
     url = f"https://api.telegram.org/bot6191098144:AAEo8eVcA04tb5bszVESyMcQ6rxlcd1cKM8/sendPhoto"
     data = {
         "chat_id": chat_id,
-        "photo": photo_url
+        "photo": photo_url,
+        "caption": caption
     }
     response = requests.post(url, data=data)
     return response.json()
